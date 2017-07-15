@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="gpa">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>GPA Projection Calculator</title>
+    <meta name="description" content="Learn how long it will take you to progress through the many stages of GPA. You can learn a new language if you can spend more hours learning.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script src="./js/vendors.min.js"></script>
+    <script src="./js/scripts.min.js"></script>
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+  </head>
+  <body>
+    <div ng-controller="CalculatorController">
+      <div class="calculator">
+        <h2>
+          <span class="face" ng-show="currentRate < 10">:(</span>
+          <span class="face" ng-show="currentRate >= 10 && currentRate < 20">:)</span>
+          <span class="face" ng-show="currentRate >= 20">:D</span>
+          I would like to study
+          <span ng-show="currentRate < 10">only</span>
+          <span ng-show="currentRate >= 20">a beastly</span>
+          <span class="hours">{{ currentRate }}</span>
+          <ng-pluralize count="currentRate" when="{
+            'one': 'hour',
+            'other': 'hours'
+          }"></ng-pluralize> per week.
+        </h2>
+
+        <rzslider
+          rz-slider-model="currentRate"
+          rz-slider-options="slider.options"></rzslider>
+
+        <a href="#statements" class="cta" data-scroll>
+          <p>See what you can do</p>
+          <span class="icon"><i class="fa fa-angle-down"></i></span>
+        </a>
+      </div>
+
+      <div id="statements">
+        <div class="statement">
+          <h2><progress-fuzzy current-rate="currentRate" hours="150"></progress-fuzzy> you'll be able to do more than find a bathroom.</h2>
+        </div>
+        <div class="statement">
+          <h2><progress-fuzzy current-rate="currentRate" hours="300"></progress-fuzzy> control of public transportation will be your domain.</h2>
+        </div>
+
+        <div class="statement">
+          <h2><progress-fuzzy current-rate="currentRate" hours="500"></progress-fuzzy> you'll compete with children over children's books.</h2>
+        </div>
+
+        <div class="statement">
+          <h2><progress-fuzzy current-rate="currentRate" hours="1000"></progress-fuzzy> you'll experience your first impactful life story from your nurturer.</h2>
+        </div>
+
+        <div class="statement">
+          <h2><progress-fuzzy current-rate="currentRate" hours="1500"></progress-fuzzy> you will be unstoppable on the streets and in your profession.</h2>
+        </div>
+
+        <div class="statement">
+          <h2>in <progress-date current-rate="currentRate" hours="2000"></progress-date> no one will mess with you.</h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
